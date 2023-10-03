@@ -1,5 +1,5 @@
 import { Command } from "https://deno.land/x/cliffy@v1.0.0-rc.3/command/mod.ts";
-import {join} from "https://deno.land/std/path/mod.ts";
+import { join } from "https://deno.land/std@0.203.0/path/mod.ts";
 
 interface Component {
   name: string;
@@ -26,9 +26,9 @@ const components: Component[] = [
 ];
 
 await new Command()
-  .name("cliffy")
-  .version("0.1.0")
-  .description("Command line framework for Deno")
+  .name("fresh_components_cli")
+  .version("0.0.1")
+  .description("Fresh components CLI")
   .parse(Deno.args);
 
 const item = components[0];
@@ -41,6 +41,6 @@ const path = join(dir, item.source);
 await Deno.mkdir(dir, { recursive: true });
 await Deno.writeTextFile(path, text);
 
-console.log("Usage: ")
+console.log("Usage: ");
+console.log(`import { ${item.name} } from "@/components/${item.source}";`);
 console.log(item.usage);
-
