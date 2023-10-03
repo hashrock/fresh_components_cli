@@ -42,6 +42,10 @@ const path = join(dir, item.source);
 await Deno.mkdir(dir, { recursive: true });
 await Deno.writeTextFile(path, text);
 
-console.log("  Usage: ");
-console.log(`    import { ${item.name} } from "@/components/${item.source}";`);
-console.log("    "+ item.usage);
+console.log("");
+console.log("%c  Component:" + item.name+ " created", 'color: blue; bold: true');
+
+console.log("  Usage: " );
+console.log(`%c    import { ${item.name} } from "@/components/${item.source}";`, "color: green" );
+console.log("%c    "+ item.usage,  "color: green" );
+console.log("");
