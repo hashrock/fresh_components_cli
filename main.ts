@@ -29,6 +29,7 @@ await new Command()
   .name("fresh_components_cli")
   .version("0.0.1")
   .description("Fresh components CLI")
+  .option("-c, --component <component:string>", "Component name")
   .parse(Deno.args);
 
 const item = components[0];
@@ -41,6 +42,6 @@ const path = join(dir, item.source);
 await Deno.mkdir(dir, { recursive: true });
 await Deno.writeTextFile(path, text);
 
-console.log("Usage: ");
-console.log(`import { ${item.name} } from "@/components/${item.source}";`);
-console.log(item.usage);
+console.log("  Usage: ");
+console.log(`    import { ${item.name} } from "@/components/${item.source}";`);
+console.log("    "+ item.usage);
